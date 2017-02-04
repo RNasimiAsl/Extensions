@@ -592,7 +592,8 @@ void main(void) { \n\
                 }
             }
             
-            console.log(this.Uniforms);
+             this.Uniforms.Push('time');
+            
             var shaderPps = new ShaderMaterialHelper().ShaderPostProcess("ShaderBuilder_" + Shader.ShaderIdentity, samplers, camera, scale, {
                 Pixel: Shader.Join(this.Fragment)
                     .replace("#[Source]", this.Body),
