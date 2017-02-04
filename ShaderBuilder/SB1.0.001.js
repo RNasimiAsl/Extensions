@@ -403,6 +403,9 @@ void main(void) { \n\
             this.Fragment.push("precision " + this.Setting.PrecisionMode + " float;\n\
 \n\
  ");
+            this.Fragment.push( this.FragmentUniforms);
+         
+         
             if (this.Setting.Uv) {
                 this.Fragment.push("varying vec2 vUV;");
             }
@@ -552,6 +555,20 @@ void main(void) { \n\
             ';
             this.FragmentUniforms += 'uniform ' + type + ' ' + name + ';\n\
             ';
+            return this;
+        };
+     
+        ShaderBuilder.prototype.SetPpsUniform = function (name, type) {
+            if (!Shader.Me.VertexUniforms)
+                Shader.Me.VertexUniforms = "";
+            if (!Shader.Me.FragmentUniforms)
+                Shader.Me.FragmentUniforms = "";
+            this.VertexUniforms += 'uniform ' + type + ' ' + name + ';\n\
+            ';
+            this.FragmentUniforms += 'uniform ' + type + ' ' + name + ';\n\
+            ';
+         
+            this.Uniforms.push(name);
             return this;
         };
         ShaderBuilder.prototype.BuildMaterial = function (scene) {
