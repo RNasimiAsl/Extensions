@@ -591,7 +591,7 @@ void main(void) { \n\
                     }
                 }
             }
-            
+            if( !this.Uniforms )  this.Uniforms = new Array();
              this.Uniforms.Push('time');
             
             var shaderPps = new ShaderMaterialHelper().ShaderPostProcess("ShaderBuilder_" + Shader.ShaderIdentity, samplers, camera, scale, {
